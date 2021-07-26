@@ -33,3 +33,5 @@ Route::get('personajes',function (){
  Route::delete('personajes/{personaje}/lineas/{linea}',function (){
     return 'Eliminar el personaje';
  });
+
+ 

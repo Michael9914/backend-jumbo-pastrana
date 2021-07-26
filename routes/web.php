@@ -13,6 +13,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('vehicles',function (){
+    return ['carro', 'moto', 'bus'];
+ });
+ 
+ Route::get('vehicles/{vehicle}/cops/{policeman}',function (){
+     return 'carro';
+  });
+ 
+ Route::post('vehicles/{vehicle}/cops/{policeman}',function (){
+     return 'Vehiculo creado';
+ });
+ 
+ Route::put( 'vehicles/{vehicle}/cops/{policeman}',function (){
+     return 'Vehiculo actualizado';
+ });
+ 
+ Route::delete( 'vehicles/{vehicle}/cops/{policeman}',function (){
+     return 'Vehiculo eliminado';
+ });
