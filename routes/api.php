@@ -14,23 +14,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('personajes',function (){
+Route::get('champions/{champion}/lines',function (){
     return ['Katarina','Yone','Xin Xhao','Irelia'];
  });
 
- Route::get('personajes/{personaje}/lineas/{linea}',function (){
+ Route::get('champions/{champion}/lines/{line}',function (){
    return ['Katarina','Yone','Xin Xhao','Irelia'];
  });
 
- Route:: post('personajes/',function (){
+ Route:: post('champions/{champion}/lines',function (){
     return 'Personaje Creado';
  });
 
- Route::put('personajes/{personaje}/lineas/{linea}',function (){
+ Route::put('champions/{champion}/lines/{line}',function (){
     return 'Actualizacion del personaje';
  });
   
- Route::delete('personajes/{personaje}/lineas/{linea}',function (){
+ Route::delete('champions/{champion}/lines/{line}',function (){
     return 'Eliminar el personaje';
  });
 
