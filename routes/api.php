@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('champions/{champion}/lines',function (){
     return ['Katarina','Yone','Xin Xhao','Irelia'];
  });
@@ -33,5 +34,3 @@ Route::get('champions/{champion}/lines',function (){
  Route::delete('champions/{champion}/lines/{line}',function (){
     return 'Eliminar el personaje';
  });
-
- 
