@@ -14,22 +14,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('projects',function (){
-    return ['proyecto1','proyecto2'];
+Route::get('personajes',function (){
+    return ['Katarina','Yone','Xin Xhao','Irelia'];
  });
 
- Route::get('projects/{project}',function (){
-    return 'proyecto1';
+ Route::get('personajes/{personaje}/lineas/{linea}',function (){
+   return ['Katarina','Yone','Xin Xhao','Irelia'];
  });
 
- Route:: post('projects/',function (){
-    return "Creado";
+ Route:: post('personajes/',function (){
+    return 'Personaje Creado';
  });
 
- Route::put('projects/{project}',function (){
-    return "Actualizado";
+ Route::put('personajes/{personaje}/lineas/{linea}',function (){
+    return 'Actualizacion del personaje';
  });
   
- Route::delete('projects/{project}',function (){
-    return "Eliminado";
+ Route::delete('personajes/{personaje}/lineas/{linea}',function (){
+    return 'Eliminar el personaje';
  });
