@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('vehicles',function (){
+Route::get('vehicles/{vehicle}/cops',function (){
     return ['carro', 'moto', 'bus'];
  });
  
@@ -21,7 +21,7 @@ Route::get('vehicles',function (){
      return 'carro';
   });
  
- Route::post('vehicles/{vehicle}/cops/{policeman}',function (){
+ Route::post('vehicles/{vehicle}/cops',function (){
      return 'Vehiculo creado';
  });
  
