@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProjectsController;
+use App\Http\Controllers\VehiclesCopsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +15,7 @@ use App\Http\Controllers\ProjectsController;
 |
 */
 
-Route::get('vehicles',function (){
+/* Route::get('vehicles',function (){
     $vehicles = ['carro', 'moto', 'bus'];
     return response()->json(
         [
@@ -81,7 +82,7 @@ Route::get('vehicles',function (){
             ]
         ], 201
     );
- });
+ }); */
 
 Route::apiResource('projects',ProjectsController::class);
 Route::prefix('project')->group(function (){
@@ -91,4 +92,12 @@ Route::prefix('project')->group(function (){
     Route::prefix('')->group(function (){
         Route::patch('state',[ProjectsController::class,'updateState']);
     });
+});
+
+Route::apiResource('vehicles/{vehicle}/cops',VehiclesCopsController::class);
+
+Route::apiResource('vehicle/{vehicle}/policeman',VehiclesCopsController::class);
+
+Route::prefix('vehicle/{vehicle}/policeman/{policeman}')->group(function () {
+   Route::patch('state',[VehiclesCopsController::class,'updateState']);
 });
