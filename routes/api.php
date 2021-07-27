@@ -94,11 +94,10 @@ Route::prefix('project')->group(function (){
     });
 });
 
-Route::apiResource('champions/{champion}/lines',ChampionsLinesController::class);
-
-Route::apiResource('champion/{champion/line',ChampionsLinesController::class);
-
-Route::prefix('champion/{champion}/line/{line}')->group(function () {
-   Route::patch('state',[ChampionsLinesController::class,'updateState']);
+Route::apiResource('champions.lines',ChampionsLinesController::class);
+Route::prefix('champion/{champion}/lines')->group(function () {
+    Route::prefix('{line}')->group(function(){
+        Route::patch('state',[ChampionsLinesController::class,'updateState']);
+    });
 });
 
