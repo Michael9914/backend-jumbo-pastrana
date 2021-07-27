@@ -15,23 +15,64 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('champions/{champion}/lines',function (){
-    return ['Katarina','Yone','Xin Xhao','Irelia'];
- });
+   return response()->json(
+      [
+          'data' => $champion,
+          'msg' => [
+              'summary' => 'consulta correcta',
+              'detail' => 'la consulta de proyectos está correcta',
+              'code' => '200'
+          ]
+      ], 200
+  );
 
  Route::get('champions/{champion}/lines/{line}',function (){
-   return ['Katarina','Yone','Xin Xhao','Irelia'];
+   return response()->json(
+      [
+          'data' => $champion,
+          'msg' => [
+              'summary' => 'consulta correcta',
+              'detail' => 'la consulta de proyectos está correcta',
+              'code' => '200'
+          ]
+      ], 200
+  );
  });
 
  Route:: post('champions/{champion}/lines',function (){
-    return 'Personaje Creado';
- });
+   return response()->json(
+      [
+          'data' => $champion,
+          'msg' => [
+              'summary' => 'Creado correctamente',
+              'detail' => 'El proyecto se creo correctamente',
+              'code' => '201'
+          ]
+      ], 201
+  );
 
  Route::put('champions/{champion}/lines/{line}',function (){
-    return 'Actualizacion del personaje';
- });
+   return response()->json(
+      [
+          'data' => null,
+          'msg' => [
+              'summary' => 'Actualizado correctamente',
+              'detail' => 'EL proyecto se actualizó correctamente',
+              'code' => '201'
+          ]
+      ], 201
+  );
   
  Route::delete('champions/{champion}/lines/{line}',function (){
-    return 'Eliminar el personaje';
- });
+   return response()->json(
+      [
+          'data' => $champion,
+          'msg' => [
+              'summary' => 'Eliminado correctamente',
+              'detail' => 'EL proyecto se eliminó correctamente',
+              'code' => '201'
+          ]
+      ], 201
+  );
 
  
