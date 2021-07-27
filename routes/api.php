@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('champions/{champion}/lines',function (){
    return response()->json(
       [
@@ -74,5 +75,6 @@ Route::get('champions/{champion}/lines',function (){
           ]
       ], 201
   );
+    return 'Eliminar el personaje';
+ });
 
- 
