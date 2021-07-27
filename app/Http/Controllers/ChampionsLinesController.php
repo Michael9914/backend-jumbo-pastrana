@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ProjectsController extends Controller
+class ChampionsLinesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,13 +13,13 @@ class ProjectsController extends Controller
      */
     public function index()
     {
-        $vehicles = ['carro', 'moto', 'bus'];
-        return response()->json(
+        $champions = ['Yone', 'Katarina', 'Ekko', 'Lux'];
+    return response()->json(
         [
-            'data' => $vehicles,
+            'data' => $champions,
             'msg' => [
                 'summary' => 'Consulta correcta',
-                'detail' => 'La consulta de los vehiculos está correcta',
+                'detail' => 'La consulta de los campeones está correcta',
                 'code' => '201'
             ]
         ], 201
@@ -34,8 +34,8 @@ class ProjectsController extends Controller
      */
     public function store(Request $request)
     {
-        $vehicles = ['carro', 'moto', 'bus']; 
-        return response() ->json(
+        $champions = ['Yone', 'Katarina', 'Ekko', 'Lux']; 
+    return response() ->json(
         [
             'data' => null,
             'msg' => [
@@ -44,7 +44,7 @@ class ProjectsController extends Controller
                 'code' => '201'
             ]
         ],201
-    );
+    );        
     }
 
     /**
@@ -55,13 +55,13 @@ class ProjectsController extends Controller
      */
     public function show($id)
     {
-        $vehicles = ['carro', 'moto', 'bus'];
-        return response()->json(
+        $champion ='Katarina';
+    return response()->json(
         [
-            'data' => $vehicles,
+            'data' => $champion,
             'msg' => [
                 'summary' => 'Consulta correcta',
-                'detail' => 'La consulta del vehículo y policia es correcta',
+                'detail' => 'La consulta del campeon es correcta',
                 'code' => '200'
             ]
         ], 200
@@ -77,8 +77,8 @@ class ProjectsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $vehicles = ['carro', 'moto', 'bus']; 
-        return response() ->json(
+        $champions = ['Yone', 'Katarina', 'Ekko', 'Lux']; 
+    return response() ->json(
         [
             'data' => null,
             'msg' => [
@@ -98,10 +98,10 @@ class ProjectsController extends Controller
      */
     public function destroy($id)
     {
-        $vehicles = ['carro', 'moto', 'bus'];
-        return response()->json(
+        $champions = ['Yone', 'Katarina', 'Ekko', 'Lux'];
+    return response()->json(
         [
-            'data' => $vehicles,
+            'data' => $champions,
             'msg' => [
                 'summary' => 'Eliminado correctamente',
                 'detail' => 'EL dato se eliminó correctamente',
@@ -110,5 +110,20 @@ class ProjectsController extends Controller
         ], 201
     );
     }
+
+    public function updateState()
+    {
+    return response()->json(
+        [
+            'data' => null,
+            'msg' => [
+                'summary' => 'Actualizado correctamente',
+                'detail' => 'EL dato se actualizo correctamente',
+                'code' => '201'
+            ]
+        ], 201
+    );
+    }
 }
+
 
