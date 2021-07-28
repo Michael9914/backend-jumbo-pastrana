@@ -10,11 +10,11 @@ class Champion extends Model
     //use HasFactory;
 
     protected $table = 'champions';
-    protected $attributes = [
+    protected $fillable = [
          'code',
          'description',
          'date',
-         'is_approved',
+         'approved',
          'tittle',
     ];
 

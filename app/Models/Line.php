@@ -9,7 +9,8 @@ class Line extends Model
 {
     //use HasFactory;
     protected $table = 'lines';
-    protected $attributes = [
+    protected $fillable = [
+         'age',
          'names',
          'email',
          'phone',
