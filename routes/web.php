@@ -94,10 +94,7 @@ Route::prefix('project')->group(function (){
     });
 });
 
-Route::apiResource('vehicles/{vehicle}/cops',VehiclesCopsController::class);
-
-Route::apiResource('vehicle/{vehicle}/policeman',VehiclesCopsController::class);
-
+Route::apiResource('vehicles.cops',VehiclesCopsController::class);
 Route::prefix('vehicle/{vehicle}/policeman/{policeman}')->group(function () {
    Route::patch('state',[VehiclesCopsController::class,'updateState']);
 });
