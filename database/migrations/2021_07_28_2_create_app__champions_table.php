@@ -18,7 +18,6 @@ class CreateAppChampionsTable extends Migration
             $table->foreignId('line_id')->constrained('app.lines');
             $table->string('identification');
             $table->string('names');
-            $table->string('phone');
             $table->integer('age')->unsigened();
             
             $table->softDeletes();
