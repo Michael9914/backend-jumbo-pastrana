@@ -15,23 +15,11 @@ class CreateAppLinesTable extends Migration
     {
         Schema::connection(env('DB_CONNECTION_APP'))->create('lines', function (Blueprint $table) {
             $table->id();
-            $table->string('code')
-            ->comment('my comment');
-
-            $table->date('date')
-            ->comment('my comment');
-
-            $table->text('description')
-            ->nullable()
-            ->comment('my comment');
-
-            $table->boolean('approved')
-            ->default(true)
-            ->comment('my comment');
-
-            $table->string('title')
-            ->comment('my comment');
-
+            $table->integer('age')->unsigened();
+            $table->string('names');
+            $table->text('email');
+            $table->string('identification');
+            
             $table->softDeletes();
             $table->timestamps();
         });

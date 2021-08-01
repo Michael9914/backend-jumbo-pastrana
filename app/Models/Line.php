@@ -15,19 +15,26 @@ class Line extends Model
          'email',
          'identification',
     ];
+    protected $casts = [
+        'is_approved' => 'boolean',
+        'date' => 'detetime:Y-m-d',
+    ];
+
+    //protected $attributes=['full_name'];
+
     //uno a uno 
-    /* function lines(){
-        return $this->belongsTo(Line::class);
+    /* function champions(){
+        return $this->belongsTo(Champion::class);
     } */
 
     //uno a varios
-    function lines(){
-        return $this->belongsTo(Line::class);
+    function champions(){
+        return $this->belongsTo(Champion::class);
     } 
 
     // varios a varios
-    /* function lines(){
-        return $this->belongsToMany(Line::class)->withTimestamps();
+    /* function champions(){
+        return $this->belongsToMany(Champion::class)->withTimestamps();
     }
  */
 }

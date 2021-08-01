@@ -16,10 +16,23 @@ class CreateAppChampionsTable extends Migration
         Schema::connection(env('DB_CONNECTION_APP'))->create('champions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('line_id')->constrained('app.lines');
-            $table->string('identification');
-            $table->string('names');
-            $table->integer('age')->unsigened();
+            $table->string('code')
+            ->comment('my comment');
             
+            $table->text('description')
+            ->nullable()
+            ->comment('my comment');
+            
+            $table->date('date')
+            ->comment('my comment');
+            
+            $table->boolean('approved')
+            ->default(true)
+            ->comment('my comment');
+            
+            $table->string('title')
+            ->comment('my comment');
+
             $table->softDeletes();
             $table->timestamps();
         });

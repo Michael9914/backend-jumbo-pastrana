@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProjectsController extends Controller
 {
@@ -13,10 +14,17 @@ class ProjectsController extends Controller
      */
     public function index()
     {
-        $vehicles = ['carro', 'moto', 'bus'];
+        //SQL
+        // $projects = DB::select('select * from app.projects');
+
+        // QUERY BUILDER
+        // $projects = DB::table('app.projects')->get();
+
+        // ELOQUENT
+        $projects = Project::get();
         return response()->json(
         [
-            'data' => $vehicles,
+            'data' => $projects,
             'msg' => [
                 'summary' => 'Consulta correcta',
                 'detail' => 'La consulta de los vehiculos está correcta',
@@ -34,16 +42,61 @@ class ProjectsController extends Controller
      */
     public function store(Request $request)
     {
-        $vehicles = ['carro', 'moto', 'bus']; 
+        //SQL
+        /*
+        $project = DB::insert('insert into app.projects (code,date,description,approved,title,created_at,updated_at)
+        values (?,?,?,?,?,?,?)', [
+            $request->code,
+            $request->date,
+            $request->description,
+            $request->approved,
+            $request->title,
+            $request->created_at,
+            $request->updated_at,
+        ]);
+        */
+        // QUERY BUILDER
+        /*
+        $project = DB::table('app.projects)->insert([
+            'code'=>$request->code,
+            'date'=>$request->date,
+            'description'=>$request->description,
+            'approved'=>$request->approved,
+            'title'=>$request->title,
+            'created_at'=>$request->created_at,
+            'update_at'=>$request->update_at,
+        ]);
+        */
+
+        //ELOQUENT
+        /*
+        $project = Project::create([
+              'code'=>$request->code,
+               'date'=>$request->date,
+               'description'=>$request->description,
+               'approved'=>$request->approved,
+               'title'=>$request->title,
+        ]);
+        */
+
+        $project = new Project();
+        $project->code = $request->code;
+        $project->date = $request->date;
+        $project->description = $request->description;
+        $project->approved = $request->approved;
+        $project->title = $request->title;
+        $project->save();
+
+        
         return response() ->json(
         [
-            'data' => null,
+            'data' => $projects,
             'msg' => [
                 'summary' => 'Creación correcta',
                 'detail' => 'El dato ha sido creado',
-                'code' => '201'
+                'code' => '200'
             ]
-        ],201
+        ],200
     );
     }
 
@@ -53,12 +106,19 @@ class ProjectsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($project)
     {
-        $vehicles = ['carro', 'moto', 'bus'];
+        // SQL
+        //$projects = DB::select('select * from app.projects where id = ?', [$project]);
+
+        // QUERY BUILDER
+        //$project = DB::table('app.projects')->find($project);
+
+        //ELOQUENT
+        $project = Project::find($project);
         return response()->json(
         [
-            'data' => $vehicles,
+            'data' => $projects,
             'msg' => [
                 'summary' => 'Consulta correcta',
                 'detail' => 'La consulta del vehículo y policia es correcta',
@@ -75,9 +135,17 @@ class ProjectsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $project)
     {
-        $vehicles = ['carro', 'moto', 'bus']; 
+        $project = Project::find($project);
+        $project->code = $request->code;
+        $project->date = $request->date;
+        $project->description = $request->description;
+        $project->approved = $request->approved;
+        $project->title = $request->title;
+        $project->save();
+
+        //$vehicles = ['carro', 'moto', 'bus']; 
         return response() ->json(
         [
             'data' => null,
@@ -96,12 +164,13 @@ class ProjectsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($project)
     {
-        $vehicles = ['carro', 'moto', 'bus'];
+        $project = Project::find($project);
+        $project->delete();
         return response()->json(
         [
-            'data' => $vehicles,
+            'data' => $project,
             'msg' => [
                 'summary' => 'Eliminado correctamente',
                 'detail' => 'EL dato se eliminó correctamente',
@@ -109,6 +178,22 @@ class ProjectsController extends Controller
             ]
         ], 201
     );
+    }
+
+    public function updateState()
+    {
+        $project = 'project';
+        return response()->json(
+            [
+                'data' => $project,
+                'msg' => [
+                    'summary' => 'actualizacion correcta',
+                    'detail' => 'el estado del proyecto se actualizo ',
+                    'code' => '201'
+                ]
+
+            ],201
+        );
     }
 }
 

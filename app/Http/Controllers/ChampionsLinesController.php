@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class ChampionsLinesController extends Controller
 {
@@ -13,8 +15,10 @@ class ChampionsLinesController extends Controller
      */
     public function index()
     {
-        $champions = ['Yone', 'Katarina', 'Ekko', 'Lux'];
-    return response()->json(
+        //$champions = ['Yone', 'Katarina', 'Ekko', 'Lux'];
+        // ELOQUENT
+        $vehicles = Project::get();
+        return response()->json(
         [
             'data' => $champions,
             'msg' => [
@@ -34,7 +38,28 @@ class ChampionsLinesController extends Controller
      */
     public function store(Request $request)
     {
-        $champions = ['Yone', 'Katarina', 'Ekko', 'Lux']; 
+        //$champions = ['Yone', 'Katarina', 'Ekko', 'Lux'];
+        /*
+        $project = DB::insert('insert into app.lines (code,date,description,approved,title,created_at,updated_at)
+        values (?,?,?,?,?,?)', [
+            $request->code,
+            $request->date,
+            $request->description,
+            $request->approved,
+            $request->title,
+            $request->created_at,
+            $request->updated_at,
+        ]);
+        */
+
+        $project = new Project();
+        $project->name = $request->name;
+        $project->date = $request->date;
+        $project->description = $request->description;
+        $project->approved = $request->approved;
+        $project->title = $request->title;
+        $project->save(); 
+
     return response() ->json(
         [
             'data' => null,
@@ -55,7 +80,9 @@ class ChampionsLinesController extends Controller
      */
     public function show($id)
     {
-        $champion ='Katarina';
+        //ELOQUENT
+        $vehicle = Project::find($vehicle);
+        //$champion ='Katarina';
     return response()->json(
         [
             'data' => $champion,
@@ -77,7 +104,15 @@ class ChampionsLinesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $champions = ['Yone', 'Katarina', 'Ekko', 'Lux']; 
+        //$champions = ['Yone', 'Katarina', 'Ekko', 'Lux'];
+        $project = new Project();
+        $project->name = $request->name;
+        $project->date = $request->date;
+        $project->description = $request->description;
+        $project->approved = $request->approved;
+        $project->title = $request->title;
+        $project->save();
+
     return response() ->json(
         [
             'data' => null,
@@ -98,6 +133,8 @@ class ChampionsLinesController extends Controller
      */
     public function destroy($id)
     {
+        $project = Project::find($project);
+        $project->delete();
         $champions = ['Yone', 'Katarina', 'Ekko', 'Lux'];
     return response()->json(
         [

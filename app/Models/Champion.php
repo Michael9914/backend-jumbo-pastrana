@@ -15,46 +15,24 @@ class Champion extends Model
          'description',
          'date',
          'approved',
-         'tittle',
+         'title',
     ];
 
-    //protected $attributes=['full_name'];
-
-    protected $casts = [
-        'is_approved' => 'boolean',
-        'date' => 'detetime:Y-m-d',
-    ];
-    
+    /*function line(){
+        return $this->hasOne(Line::class);
+    }*/
 
     // uno a uno
-    /* public function champion(){
-        return $this->hasOne(Champion::class);
+    /* public function lines(){
+        return $this->hasOne(Lines::class);
     } */
     // uno a varios
-    function champion(){
-        return $this->hasMany(Champion::class);
+    function line(){
+        return $this->hasMany(Line::class);
     }
 
     // varios a varios
-    /* function champions(){
-        return $this->belongsToMany(Champion::class)->withTimestamps();
+    /* function line(){
+        return $this->belongsToMany(Lines::class)->withTimestamps();
     } */
-
-    //Mutators
-//    function setCodeAttribute($value)
-//    {
-//        $this->attributes['code'] = strtoupper($value);
-//    }
-
-    function setDateAttribute($value)
-    {
-        
-    }
-
-    // Accessors
-//    function getFullNameAttribute()
-//   {
-//        return $this->attributes['code'].strtolower($this->attributes['description']);
-//    }
-
 }

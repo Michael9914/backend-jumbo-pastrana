@@ -22,10 +22,12 @@ class LineFactory extends Factory
     public function definition()
     {
         return [
+            'age' =>$this->faker->numberBetween(18, 50),
+            'names' =>$this->faker->name(),
             'email' =>$this->faker->email(),
             'identification' =>$this->faker->uuid(),
-            'names' =>$this->faker->name(),
-            'age' =>$this->faker->numberBetween(18, 50),
+            
+            
         ];
     }
 }

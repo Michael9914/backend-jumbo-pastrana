@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Champion;
+use App\Models\Line;
 use Illuminate\Database\Seeder;
 
 class AppSeeder extends Seeder
@@ -14,8 +15,8 @@ class AppSeeder extends Seeder
      */
     public function run()
     {
-        Champion::factory()
-            ->has(Line::factory()->count(3), 'lines')
+        Line::factory()
+            ->has(Champion::factory()->count(3), 'champions')
             ->create();
 
           
