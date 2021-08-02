@@ -15,6 +15,7 @@ class CreateAppLinesTable extends Migration
     {
         Schema::connection(env('DB_CONNECTION_APP'))->create('lines', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('champion_id')->constrained('app.champions');
             $table->integer('age')->unsigened();
             $table->string('names');
             $table->text('email');

@@ -28,7 +28,7 @@ class ChampionsController extends Controller
                 'data' => $champions,
                 'msg' => [
                     'summary' => 'consulta correcta',
-                    'detail' => 'la consulta de la computadora y la empresa es correcta',
+                    'detail' => 'la consulta del campeon es correcta',
                     'code' => '200'
                 ]
 
@@ -54,10 +54,10 @@ class ChampionsController extends Controller
 
         return response()->json(
         [
-            'data' => $champions,
+            'data' => $champion,
             'msg' => [
                 'summary' => 'consulta correcta',
-                'detail' => 'la consulta de la computadora y la empresa es correcta',
+                'detail' => 'la consulta del campeon es correcta',
                 'code' => '200'
             ]
 
@@ -147,7 +147,7 @@ class ChampionsController extends Controller
                 'data' => $champion,
                 'msg' => [
                     'summary' => 'actualizacion correcta',
-                    'detail' => 'el estado del proyecto se actualizo ',
+                    'detail' => 'el estado del campeon se actualizo ',
                     'code' => '201'
                 ]
 

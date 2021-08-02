@@ -27,7 +27,7 @@ class ProjectsController extends Controller
             'data' => $projects,
             'msg' => [
                 'summary' => 'Consulta correcta',
-                'detail' => 'La consulta de los vehiculos está correcta',
+                'detail' => 'La consulta del proyecto está correcta',
                 'code' => '201'
             ]
         ], 201

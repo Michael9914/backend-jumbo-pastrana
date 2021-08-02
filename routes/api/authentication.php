@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProjectsController;
-use App\Http\Controllers\ChampionsLinesController;
+use App\Http\Controllers\ChampionsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -94,10 +94,10 @@ Route::prefix('project')->group(function (){
     });
 });
 
-Route::apiResource('champions.lines',ChampionsLinesController::class);
+Route::apiResource('champions.lines',ChampionsController::class);
 Route::prefix('champion/{champion}/lines')->group(function () {
     Route::prefix('{line}')->group(function(){
-        Route::patch('state',[ChampionsLinesController::class,'updateState']);
+        Route::patch('state',[ChampionsController::class,'updateState']);
     });
 });
 

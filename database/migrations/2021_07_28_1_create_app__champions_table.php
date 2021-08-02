@@ -15,7 +15,6 @@ class CreateAppChampionsTable extends Migration
     {
         Schema::connection(env('DB_CONNECTION_APP'))->create('champions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('line_id')->constrained('app.lines');
             $table->string('code')
             ->comment('my comment');
             

@@ -15,8 +15,8 @@ class AppSeeder extends Seeder
      */
     public function run()
     {
-        Line::factory()
-            ->has(Champion::factory()->count(3), 'champions')
+        Champion::factory(10)
+            ->has(Line::factory()->count(3), 'line')
             ->create();
 
           
