@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\ChampionsController;
+use App\Http\Controllers\LinesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -101,3 +102,4 @@ Route::prefix('champion/{champion}/lines')->group(function () {
     });
 });
 
+Route::apiResource('lines',LinesController::class);

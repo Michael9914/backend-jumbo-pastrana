@@ -14,7 +14,19 @@ class LinesController extends Controller
      */
     public function index()
     {
-        //
+         // ELOQUENT
+         $lines = Line::get();
+         return response()->json(
+             [
+                 'data' => $lines,
+                 'msg' => [
+                     'summary' => 'consulta correcta',
+                     'detail' => 'la consulta de la linea es correcta',
+                     'age' => '200'
+                 ]
+ 
+             ],200
+         );
     }
 
     /**
@@ -27,7 +39,6 @@ class LinesController extends Controller
     {
         $line = new Line();
         $nationality = Nationality::find($request->nationality['id']);
-        $line->champions()->associate($champion)
         $line->names = $request->names;
         $line->email = $request->email;
         $line->age = $request->age;
@@ -40,7 +51,7 @@ class LinesController extends Controller
                 'msg' => [
                     'summary' => 'Creación correcta',
                     'detail' => 'El dato ha sido creado',
-                    'code' => '201'
+                    'age' => '201'
                 ]
             ],201
         );
@@ -54,7 +65,18 @@ class LinesController extends Controller
      */
     public function show($id)
     {
-        //
+        $line = Line::find($line);
+        return response()->json(
+            [
+                'data' => $line,
+                'msg' => [
+                    'summary' => 'consulta correcta',
+                    'detail' => 'la consulta de la linea es correcta',
+                    'age' => '200'
+                ]
+
+            ],200
+        );
     }
 
     /**
@@ -66,7 +88,24 @@ class LinesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $line = Line::find($line);
+        $line->age = $request->age;
+        $line->names = $request->names;
+        $line->email = $request->email;
+        $line->identification = $request->identification;
+        $line->save();
+
+        return response()->json(
+            [
+                'data' => null,
+                'msg' => [
+                    'summary' => 'actualizacion correcta',
+                    'detail' => 'los datos se han actualizado',
+                    'age' => '201'
+                ]
+
+            ],201
+        );
     }
 
     /**
@@ -77,6 +116,35 @@ class LinesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $line = Line::find($line);
+        $line->delete();
+        return response()->json(
+            [
+                'data' => $line,
+                'msg' => [
+                    'summary' => 'eliminacion correcta',
+                    'detail' => 'dato eliminado',
+                    'code' => '201'
+                ]
+
+            ],201
+        );
     }
+
+    public function updateState()
+    {
+        $line = 'line';
+        return response()->json(
+            [
+                'data' => $line,
+                'msg' => [
+                    'summary' => 'actualizacion correcta',
+                    'detail' => 'el estado de la linea se actualizo ',
+                    'code' => '201'
+                ]
+
+            ],201
+        );
+    }
+
 }
