@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\V1;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Line;
 
-class LinesController extends Controller
+class LineController extends Controller
 {
     /**
      * Display a listing of the resource.

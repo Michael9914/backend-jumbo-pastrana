@@ -2,8 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProjectsController;
-use App\Http\Controllers\ChampionsController;
+use App\Http\Controllers\V1\ProjectController;
+use App\Http\Controllers\V1\ChampionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -84,20 +84,20 @@ use App\Http\Controllers\ChampionsController;
         ], 201
     );
  }); */
-Route::apiResource('projects',ProjectsController::class);
+Route::apiResource('projects',ProjectController::class);
 Route::prefix('project')->group(function (){
     Route::prefix('{project}')->group(function (){
-        Route::patch('state',[ProjectsController::class,'updateState']);
+        Route::patch('state',[ProjectController::class,'updateState']);
     });
     Route::prefix('')->group(function (){
-        Route::patch('state',[ProjectsController::class,'updateState']);
+        Route::patch('state',[ProjectController::class,'updateState']);
     });
 });
 
-Route::apiResource('champions.lines',ChampionsController::class);
+Route::apiResource('champions.lines',ChampionController::class);
 Route::prefix('champion/{champion}/lines')->group(function () {
     Route::prefix('{line}')->group(function(){
-        Route::patch('state',[ChampionsController::class,'updateState']);
+        Route::patch('state',[ChampionController::class,'updateState']);
     });
 });
 
