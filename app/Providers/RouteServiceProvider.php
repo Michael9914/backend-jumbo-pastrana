@@ -66,7 +66,7 @@ class RouteServiceProvider extends ServiceProvider
             ->group(base_path("routes/api/${version}/public.php"));
 
         Route::prefix("api/${version}")
-            ->middleware('api')
+            ->middleware(['api', 'auth:sanctum','verify_user_blocked'])
             ->group(base_path("routes/api/${version}/private.php"));
     }
 }
