@@ -16,6 +16,15 @@ class VerifyUserAge
      */
     public function handle(Request $request, Closure $next)
     {
+        if($request->age < 18){
+            return response()->json([
+                'msg' => [
+                    'sumary' => 'Eres menor de edad',
+                    'detail' => 'No puedes ingresar',
+                ]
+            ], 401);
+        }
+
         return $next($request);
     }
 }

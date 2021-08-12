@@ -20,7 +20,7 @@ class CreateTelescopeEntriesTable extends Migration
      */
     public function __construct()
     {
-        $this->schema = Schema::connection($this->getConnection());
+        $this->schema = Schema::connection(env('DB_CONNECTION'));
     }
 
     /**

@@ -98,6 +98,10 @@ Route::apiResource('champions.lines',ChampionController::class);
 Route::prefix('champion/{champion}/lines')->group(function () {
     Route::prefix('{line}')->group(function(){
         Route::patch('state',[ChampionController::class,'updateState']);
-    });
+    });    
+});
+
+Route::middleware('verify_user_age')->get('ingresar-discoteca', function (){
+    return "pude ingresar";
 });
 
